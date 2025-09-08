@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sharan H. Rao — Portfolio</title>
+  <meta name="description" content="Portfolio of Sharan H. Rao — backend developer in the making. Projects, skills, experience and contact." />
+  <meta name="theme-color" content="#0ea5e9"/>
+  
+  <!-- Open Graph / SEO -->
+  <meta property="og:title" content="Sharan H. Rao — Portfolio" />
+  <meta property="og:description" content="Projects, skills, experience and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com" />
+  <meta property="og:image" content="https://picsum.photos/1200/630" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #101630;
+      --text: #e6e8f0;
+      --muted: #94a3b8;
+      --brand: #0ea5e9; /* sky-500 */
+      --brand-2: #22d3ee; /* cyan-400 */
+      --ring: 0 0 0 3px rgba(34, 211, 238, 0.35);
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(2,8,23,.35);
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#f8fafc; --panel:#ffffff; --text:#0b1020; --muted:#475569; --shadow:0 10px 30px rgba(2,8,23,.08);} 
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji';
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(14,165,233,.25), transparent 60%),
+                  radial-gradient(1000px 600px at 120% 10%, rgba(34,211,238,.25), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; border-radius: calc(var(--radius) - 4px); }
+
+    /* Header / Nav */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(16, 22, 48, .7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .nav {
+      max-width: 1100px; margin: 0 auto; padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-weight: 800; letter-spacing: .2px;
+      display: inline-flex; gap: 10px; align-items: center;
+    }
+    .logo-badge {
+      width: 28px; height: 28px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      display: grid; place-items: center; color: white; font-weight: 800; font-size: 16px; box-shadow: var(--shadow);
+    }
+    nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 18px; align-items: center; }
+    nav a { padding: 8px 12px; border-radius: 10px; color: var(--muted); font-weight: 600; }
+    nav a:hover, nav a:focus { color: var(--text); background: rgba(148,163,184,.12); outline: none; }
+
+    .btn { display:inline-flex; gap:10px; align-items:center; padding:10px 14px; border-radius: 12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #0b1020; font-weight: 800; box-shadow: var(--shadow); border: none; cursor: pointer; }
+    .btn:focus { outline: none; box-shadow: var(--shadow), var(--ring); }
+    .ghost { background: transparent; color: var(--text); border: 1px solid rgba(148,163,184,.35); }
+
+    /* Layout helpers */
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+    .grid { display: grid; gap: 22px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    @media (min-width: 860px) { .grid-2 { grid-template-columns: 1.1fr .9fr; } .grid-3 { grid-template-columns: repeat(3, 1fr);} }
+
+    /* Hero */
+    .hero { padding: 64px 0 40px; display: grid; gap: 24px; align-items: center; }
+    .hero h1 { font-size: clamp(28px, 6vw, 48px); line-height: 1.15; margin: 0; }
+    .hero p { color: var(--muted); font-size: clamp(16px, 2.2vw, 18px); max-width: 60ch; }
+    .hero-card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0)); border: 1px solid rgba(148,163,184,.15); padding: 18px; border-radius: var(--radius); display:flex; gap:14px; align-items:center; }
+    .avatar { width: 72px; height: 72px; border-radius: 20px; background: url('https://picsum.photos/seed/profile/200'); background-size: cover; background-position: center; box-shadow: var(--shadow); }
+
+    /* Sections */
+    section { scroll-margin-top: 90px; }
+    h2 { font-size: clamp(22px, 3vw, 30px); margin: 10px 0 18px; }
+    .panel { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)); border: 1px solid rgba(148,163,184,.18); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+
+    /* Skills */
+    .tags { display:flex; flex-wrap: wrap; gap:10px; }
+    .tag { padding: 8px 12px; border-radius: 999px; background: rgba(148,163,184,.14); color: var(--text); font-weight: 600; border: 1px solid rgba(148,163,184,.25); }
+
+    /* Projects */
+    .card { display: flex; flex-direction: column; gap: 12px; background: var(--panel); border: 1px solid rgba(148,163,184,.18); padding: 12px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .card h3 { margin: 4px 0; font-size: 18px; }
+    .card p { color: var(--muted); margin: 0; }
+    .card .meta { display:flex; justify-content: space-between; align-items:center; gap:12px; font-size: 14px; color: var(--muted); }
+
+    /* Experience timeline */
+    .timeline { position: relative; padding-left: 20px; }
+    .timeline:before { content:""; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--brand), var(--brand-2)); border-radius: 2px; }
+    .t-item { position: relative; margin: 18px 0; padding-left: 14px; }
+    .t-item:before { content:""; position: absolute; left: -2px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--panel); border: 2px solid var(--brand); box-shadow: 0 2px 10px rgba(14,165,233,.4); }
+
+    /* Contact */
+    .contact { display:grid; gap:16px; }
+    .contact a.link { display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius: 12px; border:1px solid rgba(148,163,184,.25); color: var(--text); }
+    .contact a.link:hover { border-color: rgba(148,163,184,.5); }
+
+    footer { color: var(--muted); padding: 26px 20px; text-align: center; }
+
+    /* Back to top */
+    #toTop { position: fixed; right: 18px; bottom: 18px; opacity: 0; pointer-events: none; transition: .25s; }
+    #toTop.show { opacity: 1; pointer-events: auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav" role="navigation" aria-label="Primary">
+      <a class="logo" href="#home" aria-label="Home">
+        <span class="logo-badge">S</span>
+        <span>Sharan&nbsp;Rao</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="ghost" href="#" id="themeToggle" aria-label="Toggle theme">🌓</a></li>
+          <li><a class="btn" href="./Sharan-Rao-Resume.pdf" download>Download CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <!-- HERO -->
+    <section class="hero grid grid-2" aria-labelledby="intro-heading">
+      <div>
+        <div class="hero-card" role="note" aria-label="Tagline">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <strong>Backend Developer (in progress)</strong>
+            <div style="color:var(--muted)">Python • APIs • Databases • Cloud basics</div>
+          </div>
+        </div>
+        <h1 id="intro-heading">Hi, I’m Sharan — I build clean, fast backends and helpful tools.</h1>
+        <p>
+          B.Tech student in AI & ML. I enjoy designing robust APIs, modeling data, and deploying minimal, reliable services. This portfolio showcases my projects, skills and experience.
+        </p>
+        <p>
+          <a class="btn" href="#projects">See my work →</a>
+          <a class="ghost" href="#contact" style="margin-left:8px">Get in touch</a>
+        </p>
+      </div>
+      <div class="panel">
+        <h3 style="margin-top:0">At a glance</h3>
+        <ul style="margin:0; padding-left:18px; color:var(--muted)">
+          <li>Languages: Python, JavaScript (Node.js)</li>
+          <li>Frameworks: FastAPI, Django (basics), Express</li>
+          <li>DB: PostgreSQL, MySQL, MongoDB (basics)</li>
+          <li>Tools: Git/GitHub, Docker (learning), Linux</li>
+          <li>Interests: Systems design, MLOps, clean architecture</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <div class="panel">
+        <p>
+          I’m a backend-focused developer-in-training with a knack for turning ideas into reliable services. I like writing readable code, documenting APIs, and using databases efficiently. Currently pursuing B.Tech in AI & ML.
+        </p>
+        <p>
+          My goal for the next year: ship 3 production‑ready projects and contribute to open source.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div class="panel">
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Django</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+          <span class="tag">REST</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Git</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Unit Testing</span>
+          <span class="tag">API Design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <div class="grid grid-3">
+        <article class="card">
+          <img src="https://picsum.photos/seed/api/640/360" alt="Screenshot of REST API project" />
+          <h3>TaskFlow API</h3>
+          <p>Production‑style REST API for task management built with FastAPI and PostgreSQL. Includes JWT auth, rate‑limiting and OpenAPI docs.</p>
+          <div class="meta">
+            <span>FastAPI • Postgres • JWT</span>
+            <span>
+              <a href="#" class="link">Demo</a> ·
+              <a href="#" class="link">Source</a>
+            </span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/seed/sql/640/360" alt="Screenshot of analytics service" />
+          <h3>Store Analytics Service</h3>
+          <p>ETL pipeline + API that aggregates sales and exposes KPIs. Caching with Redis and async workers for daily refresh.</p>
+          <div class="meta">
+            <span>Python • SQL • Redis</span>
+            <span>
+              <a href="#" class="link">Demo</a> ·
+              <a href="#" class="link">Source</a>
+            </span>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/seed/ml/640/360" alt="Screenshot of ML microservice" />
+          <h3>ML Inference Microservice</h3>
+          <p>Lightweight service that serves a trained model over an HTTP API with request validation, logging and CI tests.</p>
+          <div class="meta">
+            <span>FastAPI • Docker • CI</span>
+            <span>
+              <a href="#" class="link">Docs</a> ·
+              <a href="#" class="link">Source</a>
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE / EDUCATION -->
+    <section id="experience" aria-labelledby="exp-heading">
+      <h2 id="exp-heading">Experience & Education</h2>
+      <div class="panel timeline">
+        <div class="t-item">
+          <strong>Kalvium — B.Tech AI & ML</strong>
+          <div style="color:var(--muted)">2025–2029 (expected)</div>
+          <p style="margin:6px 0 0; color:var(--muted)">Coursework: Data Structures, Algorithms, DBMS, Operating Systems, ML basics.</p>
+        </div>
+        <div class="t-item">
+          <strong>Backend Intern (Self‑projects)</strong>
+          <div style="color:var(--muted)">2025</div>
+          <p style="margin:6px 0 0; color:var(--muted)">Built and deployed small APIs; learned auth, pagination, testing and CI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <div class="panel contact">
+        <p style="margin:0; color:var(--muted)">Want to collaborate or have a role for me? Reach out:</p>
+        <div style="display:flex; flex-wrap: wrap; gap:10px">
+          <a class="link" href="mailto:sharan@example.com" aria-label="Email">
+            ✉️ Email
+          </a>
+          <a class="link" href="https://github.com/yourusername" target="_blank" rel="noreferrer noopener" aria-label="GitHub">
+            🐙 GitHub
+          </a>
+          <a class="link" href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn">
+            🔗 LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button id="toTop" class="btn" aria-label="Back to top">↑</button>
+
+  <footer>
+    <small>© <span id="year"></span> Sharan H. Rao. Built with plain HTML + CSS + a dash of JS.</small>
+  </footer>
+
+  <!-- Schema.org Person JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sharan H. Rao",
+    "jobTitle": "Backend Developer (Student)",
+    "url": "https://example.com",
+    "sameAs": [
+      "https://github.com/yourusername",
+      "https://www.linkedin.com/in/yourusername"
+    ]
+  }
+  </script>
+
+  <script>
+    // Theme toggle with localStorage
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const LIGHT_KEY = 'prefers-light';
+    function setLight(on){
+      if(on){
+        document.documentElement.style.setProperty('--bg', '#f8fafc');
+        document.documentElement.style.setProperty('--panel', '#ffffff');
+        document.documentElement.style.setProperty('--text', '#0b1020');
+        document.documentElement.style.setProperty('--muted', '#475569');
+        document.documentElement.style.setProperty('--shadow', '0 10px 30px rgba(2,8,23,.08)');
+        localStorage.setItem(LIGHT_KEY, '1');
+      } else {
+        localStorage.removeItem(LIGHT_KEY);
+        location.reload(); // return to CSS defaults (dark)
+      }
+    }
+    toggle?.addEventListener('click', (e)=>{
+      e.preventDefault();
+      setLight(!localStorage.getItem(LIGHT_KEY));
+    });
+    if(localStorage.getItem(LIGHT_KEY)) setLight(true);
+
+    // Back to top button
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 400) toTop.classList.add('show'); else toTop.classList.remove('show');
+    });
+    toTop.addEventListener('click', ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
